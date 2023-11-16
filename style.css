@@ -1,0 +1,91 @@
+body {
+    background-color: rgba(216, 210, 210, 0.911) ;
+}
+.inputDiv {
+    display: flex;
+    align-items: center;
+    margin: auto;
+    justify-content: center;
+}
+
+.card{
+    height:80%;
+}
+.cardMain{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(4, 1fr);
+    margin-top: 1rem;
+    
+}
+
+.noResults{
+    font-size: 3rem;
+    color: rgb(172, 129, 172);
+    font-weight: 600;
+    
+}
+
+.card-img-top{
+    height: 80%;
+}
+
+.card-body{
+    border: none;
+    background-color: rgb(154, 179, 179);
+    font-weight: 700;
+    text-transform: capitalize;
+    border-radius: 0 0 5px 5px;
+    padding-top: 0;
+    color: white;
+}
+
+.navbar-brand{
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: blueviolet;
+    margin-left: 2rem;
+}
+
+.logo {
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.418);
+    font-size: 2rem;
+    margin-left: 2rem;
+}
+
+
+#searchBtn{
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+
+#searchInput{
+    border-radius: 5px;
+    outline: invert;
+}
+
+
+@media (max-width: 768px){
+    .container{
+        width: 80%;
+        
+
+    }
+    #searchInput{
+        width: 80%;
+
+    }
+    .cardMain{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        gap: .5rem;
+    }
+    #searchInput::placeholder{
+        font-size: 1rem;
+        
+    }
+}
