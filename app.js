@@ -8,9 +8,9 @@ searchBtn.addEventListener("click", async () => {
         cardMain.textContent = ""
         let timerInterval;
 Swal.fire({
-  title: "There is no word in input area. Please, search an image!",
+  title: "There is no word in input area. Please, search an image topic!",
   html: "I will close in <b></b> milliseconds.",
-  timer: 2000,
+  timer: 3000,
   timerProgressBar: true,
   didOpen: () => {
     Swal.showLoading();
@@ -38,8 +38,10 @@ Swal.fire({
     console.log(data);
 }
 });
+
 const noResults = document.querySelector(".noResults")
 const cardMain = document.querySelector(".cardMain");
+
 
 const getRandomImg = (images) => {
     
@@ -56,9 +58,39 @@ const getRandomImg = (images) => {
     });
 }
 
+const showRandomImages = async (count) => {
+  const apiUrl = `https://api.unsplash.com/photos/random?client_id=${accessKey}&count=${count}`;
+  const response = await fetch(apiUrl);
+  const data = await response.json();
+  displayImages(data);
+};
 
+const showSearchResults = async (query) => {
+  const apiUrl = `https://api.unsplash.com/search/photos?client_id=${accessKey}&query=${encodeURIComponent(
+    query
+  )}`;
+  const response = await fetch(apiUrl);
+  const data = await response.json();
+  displayImages(data.results);
+};
 
+document.addEventListener("DOMContentLoaded", async () => {
+  await showRandomImages(10);
+});
 
+const displayImages = (images) => {
+  const cardMain = document.querySelector(".cardMain");
+  cardMain.innerHTML = ``;
+
+  images.forEach((image) => {
+    const cardHtml = `<div class="card  col col-md-3" style="width: 20rem; height:100%">
+      <a href="" ></a>
+      <img src="${image.urls.small}" class="card-img-top" alt="...">
+      <span>${image.alt_description}</span>
+    </div>`;
+    cardMain.innerHTML += cardHtml;
+  });
+};
 
 
 
