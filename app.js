@@ -1,6 +1,8 @@
 const accessKey = "aaj6YPiMnAhQba_1qtN0W-0vIg9jlgl0HZ6c43mW1ZM";
 const searchInput = document.querySelector("#searchInput");
 const searchBtn = document.querySelector("#searchBtn");
+const noResults = document.querySelector(".noResults")
+const cardMain = document.querySelector(".cardMain");
 
 searchBtn.addEventListener("click", async () => {
     if(searchInput.value ==="") {
@@ -39,8 +41,7 @@ Swal.fire({
 }
 });
 
-const noResults = document.querySelector(".noResults")
-const cardMain = document.querySelector(".cardMain");
+
 
 
 const getRandomImg = (images) => {
@@ -86,7 +87,9 @@ const displayImages = (images) => {
     const cardHtml = `<div class="card  col col-md-3" style="width: 20rem; height:100%">
       <a href="" ></a>
       <img src="${image.urls.small}" class="card-img-top" alt="...">
-      <span>${image.alt_description}</span>
+      <div class="randomDiv">
+      <p class="randomCardText">${image.alt_description}</p>
+      </div>
     </div>`;
     cardMain.innerHTML += cardHtml;
   });
